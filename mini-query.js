@@ -51,15 +51,30 @@ var SweetSelector = (function(){
     }
 
     var addClass = function(anchortag,newtag) {
-      var classSelector = document.querySelector(anchortag);
-      console.log(newtag)
-      classSelector.insertAdjacentHTML('afterbegin', newtag);
+      var croptAnchorTag = anchortag.substr(1,anchortag.length)
+      // return croptAnchorTag
+      var classSelector = document.getElementsByClassName(croptAnchorTag)
+        for(i=0; i <classSelector.length; i++) {
+           classSelector[i].className = classSelector[i].className + ' ' + newtag
+        }
+      return classSelector
+    }
+
+    var removeClass = function(anchortag,newtag) {
+      var croptAnchorTag = anchortag.substr(1,anchortag.length)
+      var startClassNames = croptAnchorTag
+      var classSelector = document.getElementsByClassName(croptAnchorTag)
+        for(i=0; i <classSelector.length; i++) {
+           classSelector[i].className = startClassNames
+        }
+      return classSelector
     }
 
     return {
       show: show,
       hide: hide,
-      addClass: addClass
+      addClass: addClass,
+      removeClass: removeClass
     }
 
   })();

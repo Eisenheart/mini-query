@@ -28,13 +28,41 @@ var SweetSelector = (function(){
       return anchorTag;
     }
   }
-
-
   return {
     select: select
   }
-
-
 })();
 
 
+  var Dom = (function(){
+    // Pseudocode
+    // add anchor tag as parameter
+    // search for anchor tag using query selector
+    // set display to none or null
+
+    var hide = function(anchortag) {
+      var classSelector = document.querySelector(anchortag);
+      classSelector.style.display = 'none';
+    }
+
+    var show = function(anchortag) {
+      var classSelector = document.querySelector(anchortag);
+      classSelector.style.display = 'block';
+    }
+
+    var addClass = function(anchortag,newtag) {
+      var classSelector = document.querySelector(anchortag);
+      console.log(newtag)
+      classSelector.insertAdjacentHTML('afterbegin', newtag);
+    }
+
+    return {
+      show: show,
+      hide: hide,
+      addClass: addClass
+    }
+
+  })();
+
+// DOM.hide('.klass') // hides the div
+// DOM.show('.klass') // shows the div
